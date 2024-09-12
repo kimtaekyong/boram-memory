@@ -1,15 +1,26 @@
 "use client";
 
-import GlobalStyles from "@/styles/globals";
 import styled from "styled-components";
 import React from "react";
+import Swiper from "@/components/common/Swiper";
 
 const intro = () => {
-  const Introcontainer = styled.div``;
+  const Introcontainer = styled.div`
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    span {
+      position: absolute;
+      top: 0;
+      z-index: 1000;
+    }
+  `;
+
   return (
     <>
-      <GlobalStyles />
-      <Introcontainer>인트로페이지</Introcontainer>
+      <Introcontainer>
+        <Swiper />
+      </Introcontainer>
     </>
   );
 };

@@ -11,7 +11,7 @@ const config: Config = {
     colors: {
       Background: "#F3F4F6",
       BarndColor: "#1D2088",
-      Textcolor: "#66707A",
+      Textcolor: "#999999",
       Title: "#181A1B",
       PointColor: "#3985F2",
       Caution: "#FD541E",
