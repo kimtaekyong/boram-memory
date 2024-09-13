@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation"; // usePathname import
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname(); // 현재 경로 가져오기
-  const isIntroPage = pathname === "/intro"; // intro 페이지 확인
+  const isIntroPage = pathname === "/"; // intro 페이지 확인
 
   return (
     <html lang="en">

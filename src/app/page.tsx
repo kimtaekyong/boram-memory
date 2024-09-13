@@ -1,15 +1,25 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import styled from "styled-components";
+import React from "react";
+import SwiperMain from "@/components/common/SwiperMain";
 
-export default function Home() {
-  const router = useRouter();
+const Main = () => {
+  const Introcontainer = styled.div`
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    user-select: "none";
+    pointer-events: "none";
+  `;
 
-  useEffect(() => {
-    // 페이지가 처음 렌더링될 때 intro 페이지로 리디렉션
-    router.push("/intro");
-  }, [router]);
+  return (
+    <>
+      <Introcontainer>
+        <SwiperMain />
+      </Introcontainer>
+    </>
+  );
+};
 
-  return null; // 리디렉션 후에는 이 컴포넌트가 렌더링되지 않음
-}
+export default Main;
