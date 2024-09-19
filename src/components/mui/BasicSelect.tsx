@@ -43,16 +43,15 @@ export default function BasicSelect() {
     const value = event.target.value as string;
     setFamilySite(value);
 
-    // 외부 링크로 이동
     switch (value) {
       case "10":
-        window.location.href = "https://www.boram.com"; // 외부 사이트 링크
+        window.open("https://www.boram.com", "_blank", "noopener,noreferrer"); // 새 창에서 외부 사이트 열기
         break;
       case "20":
-        window.location.href = "https://www.boramsangjo.com/"; // 다른 외부 사이트 링크
+        window.open("https://www.boramsangjo.com/", "_blank", "noopener,noreferrer"); // 새 창에서 다른 외부 사이트 열기
         break;
       case "30":
-        window.location.href = "https://www.boramlife.com/"; // 또 다른 외부 사이트 링크
+        window.open("https://www.boramlife.com/", "_blank", "noopener,noreferrer"); // 새 창에서 또 다른 외부 사이트 열기
         break;
       default:
         break;
