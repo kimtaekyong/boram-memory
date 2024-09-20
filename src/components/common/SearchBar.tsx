@@ -27,7 +27,7 @@ const SearchBar = () => {
 
   return (
     <SearchWrap>
-      <h2>조회기간</h2>
+      <h2>조회</h2>
       <DateWrap>
         <DatePicker />
         <Search />

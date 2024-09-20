@@ -39,7 +39,6 @@ const logoutMain = () => {
       }
     }
   `;
-
   return (
     <>
       <SwiperUser />

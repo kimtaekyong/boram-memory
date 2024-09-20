@@ -1,57 +1,51 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import Primary from "../common/button/Primary";
+import { useAuth } from "@/context/AuthContext"; // AuthContext import
 
 export default function LoginStatus() {
+  const { user, logout } = useAuth(); // AuthContext에서 user 정보와 login, logout 함수 가져옴
+  const router = useRouter();
+
   const Userstatus = styled.div`
     display: flex;
     align-items: center;
     column-gap: 18px;
   `;
+
   const LoginStatus = styled.div`
     display: flex;
     align-items: center;
     column-gap: 4px;
   `;
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 관리
-  const [userName, setUserName] = useState(""); // 유저 네임 상태 관리
-  const router = useRouter();
-
+  // 로그인 핸들러
   const handleLogin = () => {
-    // 로그인 처리 로직
-    setIsLoggedIn(true);
-    setUserName("홍길동"); // 로그인된 유저의 이름을 설정
-    router.push("/login");
+    router.push("/login"); // 로그인 페이지로 이동
   };
 
+  // 로그아웃 핸들러
   const handleLogout = () => {
-    // 로그아웃 처리 로직
-    setIsLoggedIn(false);
-    setUserName("");
-    // 로그아웃 후 리다이렉트 또는 기타 로직 수행 가능
-    router.push("/");
+    logout(); // 로그아웃 처리
+    router.push("/logoutMain"); // 로그아웃 후 메인 페이지로 이동
   };
 
   const handleSignup = () => {
-    // 회원가입 처리 로직
     router.push("/signup"); // 회원가입 페이지로 이동
   };
 
   const handleMyPage = () => {
-    // 마이페이지 이동 로직
-    router.push("/mypage");
+    router.push("/mypage"); // 마이페이지로 이동
   };
 
   return (
     <Userstatus>
-      <span className="userName text-xl">{isLoggedIn ? userName + " 님 반갑습니다." : ""} </span>
       <LoginStatus>
-        {/* 로그인 여부에 따라 버튼 내용 및 동작 변경 */}
-        {isLoggedIn ? (
+        <span className="userName text-xl font-medium mr-5">{user ? `${user.name} 님, 환영합니다!` : ""}</span>
+        {/* user가 있으면 로그인된 상태로 간주하여 로그아웃/마이페이지 버튼을 표시 */}
+        {user ? (
           <>
             <Primary onClick={handleMyPage} text="마이페이지" color="#3985F2" />
             <Primary onClick={handleLogout} text="로그아웃" color="#3985F2" />

@@ -1,15 +1,21 @@
 "use client";
 
-import GlobalStyles from "@/styles/globals";
+import LoginForm from "@/components/forms/LoginForm";
 import React from "react";
+import { styled } from "styled-components";
 
-const login = () => {
+const Login = () => {
+  const PageContainer = styled.div`
+    max-width: 1280px;
+    margin: 0 auto;
+  `;
   return (
-    <div>
-      <GlobalStyles />
-      로그인페이지
-    </div>
+    <>
+      <PageContainer>
+        <LoginForm />
+      </PageContainer>
+    </>
   );
 };
 
-export default login;
+export default Login;
