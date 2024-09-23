@@ -127,10 +127,10 @@ const Pagelayout = styled.div`
         height: 58px;
         font-size: 16px;
         font-weight: 700;
-        color: #1f1f1f;
+        color: #fff;
+        background-color: #1f1f1f;
         border-radius: 4px;
         width: 100%;
-        border: 1px solid #e5e8eb;
       }
     }
   }

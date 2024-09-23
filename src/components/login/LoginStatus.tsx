@@ -47,13 +47,13 @@ export default function LoginStatus() {
         {/* user가 있으면 로그인된 상태로 간주하여 로그아웃/마이페이지 버튼을 표시 */}
         {user ? (
           <>
-            <Primary onClick={handleMyPage} text="마이페이지" color="#3985F2" />
-            <Primary onClick={handleLogout} text="로그아웃" color="#3985F2" />
+            <Primary onClick={handleMyPage} text="마이페이지" bgcolor="#3985F2" fontcolor="#fff" />
+            <Primary onClick={handleLogout} text="로그아웃" bgcolor="#3985F2" fontcolor="#fff" />
           </>
         ) : (
           <>
-            <Primary onClick={handleLogin} text="로그인" color="#3985F2" />
-            <Primary onClick={handleSignup} text="회원가입" color="#3985F2" />
+            <Primary onClick={handleLogin} text="로그인" bgcolor="" fontcolor="#1f1f1f" />
+            <Primary onClick={handleSignup} text="회원가입" bgcolor="" fontcolor="#1f1f1f" />
           </>
         )}
       </LoginStatus>

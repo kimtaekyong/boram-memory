@@ -248,8 +248,8 @@ const CheckboxWrapper = styled.div`
   line-height: 1;
   input[type="checkbox"] {
     appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border: 1px solid #e5e8eb;
     border-radius: 50%;
     position: relative;
