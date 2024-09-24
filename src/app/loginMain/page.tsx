@@ -21,7 +21,10 @@ const PageContainer = styled.div`
 `;
 const LeftContainer = styled.div`
   width: 100%;
+  height: 100%;
   max-width: 400px;
+  position: sticky;
+  top: 12px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
   border-radius: 8px;

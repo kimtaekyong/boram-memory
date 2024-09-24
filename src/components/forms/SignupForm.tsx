@@ -79,7 +79,6 @@ const SignupForm = () => {
         <h2>약관에 동의해주세요.</h2>
         <p>회원가입에 필요한 필수항목 및 선택항목 약관에 동의 해 주세요.</p>
       </Checktitle>
-
       <CheckboxAll>
         <div className="AllWrap">
           <div>

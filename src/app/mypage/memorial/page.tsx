@@ -1,8 +1,5 @@
 "use client";
 
-import Activity from "@/components/Mypage/Activity";
-import Authority from "@/components/Mypage/Authority";
-import Memorial from "@/components/Mypage/Memorial";
 import Tabbutton from "@/components/Mypage/Tab/Tabbutton";
 import React from "react";
 import styled from "styled-components";
@@ -13,6 +10,7 @@ const Page = styled.div`
 const PageContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
+  height: calc(100vh - 80px);
 `;
 const PageTitle = styled.div`
   text-align: center;
@@ -35,8 +33,9 @@ const Container = styled.div`
   flex-direction: column;
   row-gap: 12px;
 `;
+const TabContainer = styled.div``;
 
-const mypage = () => {
+const memorial = () => {
   return (
     <Page>
       <PageContainer>
@@ -44,15 +43,13 @@ const mypage = () => {
           <h2>마이페이지</h2>
           <p>추모관 관리 및 회원정보를 변경 하실 수 있습니다.</p>
         </PageTitle>
-        <Tabbutton />
-        <Container>
-          <Activity />
-          <Authority />
-          <Memorial />
-        </Container>
+        <TabContainer>
+          <Tabbutton />
+        </TabContainer>
+        <Container></Container>
       </PageContainer>
     </Page>
   );
 };
 
-export default mypage;
+export default memorial;
