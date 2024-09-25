@@ -1,6 +1,7 @@
 "use client";
 
 import Tabbutton from "@/components/Mypage/Tab/Tabbutton";
+import UserChange from "@/components/Mypage/UserChange/UserChange";
 import React from "react";
 import styled from "styled-components";
 
@@ -33,7 +34,6 @@ const Container = styled.div`
   flex-direction: column;
   row-gap: 12px;
 `;
-const TabContainer = styled.div``;
 
 const userChange = () => {
   return (
@@ -43,10 +43,10 @@ const userChange = () => {
           <h2>마이페이지</h2>
           <p>추모관 관리 및 회원정보를 변경 하실 수 있습니다.</p>
         </PageTitle>
-        <TabContainer>
-          <Tabbutton />
-        </TabContainer>
-        <Container></Container>
+        <Tabbutton />
+        <Container>
+          <UserChange />
+        </Container>
       </PageContainer>
     </Page>
   );

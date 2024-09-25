@@ -8,8 +8,8 @@ const TableHeader: React.FC<TableHeaderProps> = ({ columns }) => {
   return (
     <thead>
       <tr>
-        {columns.map((column, index) => (
-          <th key={index}>{column}</th>
+        {columns.map((column, id) => (
+          <th key={id}>{column}</th>
         ))}
       </tr>
     </thead>

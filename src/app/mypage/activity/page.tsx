@@ -1,5 +1,7 @@
 "use client";
 
+import Activity from "@/components/Mypage/Activity/ActivityTable";
+import Search from "@/components/Mypage/Activity/Search";
 import Tabbutton from "@/components/Mypage/Tab/Tabbutton";
 import React from "react";
 import styled from "styled-components";
@@ -33,7 +35,23 @@ const Container = styled.div`
   flex-direction: column;
   row-gap: 12px;
 `;
-const TabContainer = styled.div``;
+const Component = styled.div`
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 24px;
+  border-radius: 8px;
+  .component__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1f1f1f;
+    }
+  }
+`;
 
 const activity = () => {
   return (
@@ -43,10 +61,23 @@ const activity = () => {
           <h2>마이페이지</h2>
           <p>추모관 관리 및 회원정보를 변경 하실 수 있습니다.</p>
         </PageTitle>
-        <TabContainer>
-          <Tabbutton />
-        </TabContainer>
-        <Container></Container>
+
+        <Tabbutton />
+
+        <Container>
+          <Component>
+            <div className="component__title">
+              <h2>추모관 권한 추가하기</h2>
+            </div>
+            <Search />
+          </Component>
+          <Component>
+            <div className="component__title">
+              <h2>권한이 부여 된 추모관</h2>
+            </div>
+            <Activity useActionCell={false} showNotesColumn={false} />
+          </Component>
+        </Container>
       </PageContainer>
     </Page>
   );

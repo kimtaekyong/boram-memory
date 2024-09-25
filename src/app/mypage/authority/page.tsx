@@ -1,7 +1,9 @@
 "use client";
 
+import Dropdown from "@/components/common/Drop/Dropdown";
+import Authority from "@/components/Mypage/Authority/Authority";
 import Tabbutton from "@/components/Mypage/Tab/Tabbutton";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Page = styled.div`
@@ -33,9 +35,34 @@ const Container = styled.div`
   flex-direction: column;
   row-gap: 12px;
 `;
-const TabContainer = styled.div``;
+const Component = styled.div`
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 24px;
+  border-radius: 8px;
+  .component__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1f1f1f;
+    }
+  }
+`;
 
-const activity = () => {
+const authority = () => {
+  const options = ["홍길자", "홍길동", "홍길순"];
+
+  // selectedOption 기본값 설정
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, react-hooks/rules-of-hooks
+  const [_selectedOption, setSelectedOption] = useState<string>(options[0]);
+
+  const handleSelect = (option: string) => {
+    setSelectedOption(option);
+  };
   return (
     <Page>
       <PageContainer>
@@ -43,13 +70,22 @@ const activity = () => {
           <h2>마이페이지</h2>
           <p>추모관 관리 및 회원정보를 변경 하실 수 있습니다.</p>
         </PageTitle>
-        <TabContainer>
-          <Tabbutton />
-        </TabContainer>
-        <Container></Container>
+
+        <Tabbutton />
+
+        <Container>
+          <Component>
+            <div className="component__title">
+              <h2>추모관관리</h2>
+              <Dropdown options={options} onSelect={handleSelect} />
+            </div>
+            <Authority />
+          </Component>
+          <Component></Component>
+        </Container>
       </PageContainer>
     </Page>
   );
 };
 
-export default activity;
+export default authority;

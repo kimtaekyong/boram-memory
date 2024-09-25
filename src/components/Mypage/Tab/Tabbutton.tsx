@@ -19,8 +19,7 @@ const Wrap = styled.div`
 
 const TabBtncontainer = styled.div`
   display: flex;
-  column-gap: 6px;
-
+  column-gap: 4px;
   button {
     padding: 8px 12px;
     font-size: 14px;
@@ -50,14 +49,14 @@ const Tabbutton = () => {
           권한관리
         </button>
         <button
-          className={pathname === "/mypage/memorial" ? "active" : ""}
-          onClick={() => router.push("/mypage/memorial")}
+          className={pathname === "/mypage/authority" ? "active" : ""}
+          onClick={() => router.push("/mypage/authority")}
         >
           추모관관리
         </button>
         <button
-          className={pathname === "/mypage/authority" ? "active" : ""}
-          onClick={() => router.push("/mypage/authority")}
+          className={pathname === "/mypage/memorial" ? "active" : ""}
+          onClick={() => router.push("/mypage/memorial")}
         >
           활동관리
         </button>

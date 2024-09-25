@@ -12,6 +12,7 @@ interface TableContainerProps {
 const TableLayout = styled.div`
   table {
     width: 100%;
+    border-radius: 4px;
     thead {
       tr {
         border: 1px solid #e5e5e5;
@@ -43,8 +44,8 @@ const TableContainer: React.FC<TableContainerProps> = ({ columns, data, useActio
       <table>
         <TableHeader columns={columns} />
         <tbody>
-          {data.map((rowData, index) => (
-            <TableRow key={index} rowData={rowData} useActionCell={useActionCell} />
+          {data.map((rowData, id) => (
+            <TableRow key={id} rowData={rowData} useActionCell={useActionCell} />
           ))}
         </tbody>
       </table>
