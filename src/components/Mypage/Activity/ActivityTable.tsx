@@ -2,7 +2,6 @@ import React from "react";
 import TableContainer from "../Table/TableContainer";
 
 const defaultColumns = ["추모관 명 (고인명)", "별세일시", "관리자 (상주)", "관리자 (상주) 연락처", "상태", "비고"];
-
 const simplifiedColumns = ["추모관 명 (고인명)", "별세일시", "관리자 (상주)", "관리자 (상주) 연락처", "상태"];
 
 const data = [

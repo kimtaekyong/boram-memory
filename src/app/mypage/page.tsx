@@ -3,7 +3,7 @@
 import Dropdown from "@/components/common/Drop/Dropdown";
 import Activity from "@/components/Mypage/Activity/ActivityTable";
 import Authority from "@/components/Mypage/Authority/Authority";
-import Memorial from "@/components/Mypage/Memorial";
+import Memorial from "@/components/Mypage/Memorial/Memorial";
 import Tabbutton from "@/components/Mypage/Tab/Tabbutton";
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -75,7 +75,7 @@ const Mypage = () => {
   const handleOpen = () => {
     console.log("활동관리 더 보기");
   };
-
+  const shouldShowCheckbox = false; // 체크박스를 표시할지 여부
   return (
     <Page>
       <PageContainer>
@@ -105,7 +105,7 @@ const Mypage = () => {
                 더보기
               </button>
             </div>
-            <Memorial />
+            <Memorial useCheckbox={shouldShowCheckbox} showNotesColumn={false} />
           </Component>
         </Container>
       </PageContainer>

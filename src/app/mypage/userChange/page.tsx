@@ -11,7 +11,6 @@ const Page = styled.div`
 const PageContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  height: calc(100vh - 80px);
 `;
 const PageTitle = styled.div`
   text-align: center;
@@ -35,7 +34,37 @@ const Container = styled.div`
   row-gap: 12px;
 `;
 
+const Result = styled.div`
+  display: flex;
+  justify-content: center;
+  column-gap: 4px;
+  padding: 14px 0 60px 0;
+  button {
+    padding: 14px 48px;
+    border-radius: 4px;
+    color: #1f1f1f;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .cancelBtn {
+    border: 1px solid #e5e5e5;
+  }
+  .sendlBtn {
+    border: 1px solid #0064ff;
+    background-color: #0064ff;
+    color: #fff;
+  }
+`;
+
 const userChange = () => {
+  const handleCancel = () => {
+    alert("취소");
+  };
+
+  const handleSend = () => {
+    alert("확인버튼");
+  };
+
   return (
     <Page>
       <PageContainer>
@@ -46,6 +75,14 @@ const userChange = () => {
         <Tabbutton />
         <Container>
           <UserChange />
+          <Result>
+            <button onClick={handleCancel} className="cancelBtn">
+              취소
+            </button>
+            <button onClick={handleSend} className="sendlBtn">
+              확인
+            </button>
+          </Result>
         </Container>
       </PageContainer>
     </Page>

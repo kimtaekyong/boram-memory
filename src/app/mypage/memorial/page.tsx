@@ -1,5 +1,6 @@
 "use client";
 
+import Memorial from "@/components/Mypage/Memorial/Memorial";
 import Tabbutton from "@/components/Mypage/Tab/Tabbutton";
 import React from "react";
 import styled from "styled-components";
@@ -10,7 +11,6 @@ const Page = styled.div`
 const PageContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  height: calc(100vh - 80px);
 `;
 const PageTitle = styled.div`
   text-align: center;
@@ -33,8 +33,23 @@ const Container = styled.div`
   flex-direction: column;
   row-gap: 12px;
 `;
-const TabContainer = styled.div``;
-
+const Component = styled.div`
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 24px;
+  border-radius: 8px;
+  .component__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1f1f1f;
+    }
+  }
+`;
 const memorial = () => {
   return (
     <Page>
@@ -43,10 +58,33 @@ const memorial = () => {
           <h2>마이페이지</h2>
           <p>추모관 관리 및 회원정보를 변경 하실 수 있습니다.</p>
         </PageTitle>
-        <TabContainer>
-          <Tabbutton />
-        </TabContainer>
-        <Container></Container>
+        <Tabbutton />
+        <Container>
+          <Component>
+            <div className="component__title">
+              <h2>
+                추모글<span>4건</span>
+              </h2>
+            </div>
+            <Memorial />
+          </Component>
+          <Component>
+            <div className="component__title">
+              <h2>
+                좋아요<span>4건</span>
+              </h2>
+            </div>
+            <Memorial />
+          </Component>
+          <Component>
+            <div className="component__title">
+              <h2>
+                비공개 <span>2건</span>
+              </h2>
+            </div>
+            <Memorial />
+          </Component>
+        </Container>
       </PageContainer>
     </Page>
   );

@@ -86,8 +86,8 @@ const ResultBtn = styled.button<{ isActive: boolean }>`
   color: #1f1f1f;
   font-size: 16px;
   font-weight: 700;
-  cursor: ${({ isActive }: { isActive: boolean }) => (isActive ? "pointer" : "not-allowed")};
-  opacity: ${({ isActive }: { isActive: boolean }) => (isActive ? 1 : 0.5)};
+  cursor: ${({ isActive }) => (isActive ? "pointer" : "not-allowed")};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0.5)};
 `;
 
 const Search = () => {
