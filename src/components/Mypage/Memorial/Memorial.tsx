@@ -3,11 +3,23 @@
 import React, { ChangeEvent, useState } from "react";
 import TableContainer from "../Table/TableContainer";
 
+// DataItem 인터페이스 정의
+interface DataItem {
+  id: number;
+  title: string;
+  creatName: string;
+  relationship: string;
+  DeadName: string;
+  creationDay: string;
+  isPublished?: boolean; // 선택적 속성으로 설정
+  disclosure?: string; // 선택적 속성
+}
+
 const defaultColumns = ["번호", "제목", "작성자", "게시여부", "관계", "고인명", "작성일"];
 const simplifiedColumns = ["번호", "제목", "작성자", "관계", "고인명", "작성일"];
 
 // 데이터 배열에 게시 여부 추가
-const defaultData = [
+const defaultData: DataItem[] = [
   {
     id: 1,
     title: "보고싶습니다..보고싶습니다보고싶습니다보고싶습니다보고싶습니다",
@@ -49,7 +61,8 @@ const defaultData = [
     creationDay: "YYYY-MM-DD",
   },
 ];
-const simplifiedData = [
+
+const simplifiedData: DataItem[] = [
   {
     id: 1,
     title: "보고싶습니다..보고싶습니다보고싶습니다보고싶습니다보고싶습니다",
@@ -90,11 +103,9 @@ interface MemorialProps {
 }
 
 const Memorial: React.FC<MemorialProps> = ({ useCheckbox = true, showNotesColumn = true }) => {
-  // 조건에 따라 사용할 데이터를 결정
   const columns = showNotesColumn ? defaultColumns : simplifiedColumns;
   const data = showNotesColumn ? defaultData : simplifiedData;
 
-  // Select all 상태 관리
   const [isAllSelected, setIsAllSelected] = useState(false);
 
   const handleSelectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -102,20 +113,19 @@ const Memorial: React.FC<MemorialProps> = ({ useCheckbox = true, showNotesColumn
     // 추가적인 선택 로직...
   };
 
-  // isPublished 속성은 화면에 렌더링되지 않도록 필터링
-  const filteredData = data.map(({ isPublished, ...rest }) => rest);
+  // isPublished 속성 제외 후 렌더링할 데이터 설정
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const filteredData: Omit<DataItem, "isPublished">[] = data.map(({ isPublished, ...rest }) => rest);
 
   return (
-    <>
-      <TableContainer
-        useCheckbox={useCheckbox}
-        columns={columns}
-        data={filteredData} // isPublished가 제외된 데이터 전달
-        useActionCell={false}
-        onSelectAll={handleSelectAll}
-        isAllSelected={isAllSelected}
-      />
-    </>
+    <TableContainer
+      useCheckbox={useCheckbox}
+      columns={columns}
+      data={filteredData} // isPublished가 제외된 데이터 전달
+      useActionCell={false}
+      onSelectAll={handleSelectAll}
+      isAllSelected={isAllSelected}
+    />
   );
 };
 

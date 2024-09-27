@@ -1,55 +1,57 @@
 "use client";
 
-import Dday from "@/components/Logindetail/Dday";
-import Interest from "@/components/Logindetail/Interest";
-import DeadFeed from "@/components/Logindetail/DeadFeed";
-import Posthistory from "@/components/Logindetail/Posthistory";
-import Profile from "@/components/Logindetail/Profile";
+import PostCard from "@/components/card/PostCard";
+import Deceased from "@/components/user/Deceased";
 import React from "react";
 import { styled } from "styled-components";
 
 const Page = styled.div`
   background-color: rgba(211, 211, 211, 0.15);
 `;
-
 const PageContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  display: flex;
   padding: 24px 0;
-  column-gap: 14px;
-`;
-const LeftContainer = styled.div`
   width: 100%;
-  height: 100%;
+  display: flex;
+  column-gap: 12px;
+`;
+const Component = styled.div`
   max-width: 400px;
-  position: sticky;
-  top: 12px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
+  padding: 18px 24px;
   border-radius: 8px;
-`;
-
-const RightContainer = styled.div`
   width: 100%;
+  height: 100%;
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f1f1f;
+    margin-bottom: 24px;
+  }
+`;
+const PostComponent = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
+  row-gap: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
 `;
 
 const loginMain = () => {
   return (
     <Page>
       <PageContainer>
-        <LeftContainer>
-          <Profile />
-        </LeftContainer>
-        <RightContainer>
-          <Posthistory />
-          <Dday />
-          <Interest />
-          <DeadFeed />
-        </RightContainer>
+        <Component>
+          <h2>등록 된 추모관</h2>
+          <Deceased />
+        </Component>
+        <PostComponent>
+          <PostCard></PostCard>
+          <PostCard></PostCard>
+        </PostComponent>
       </PageContainer>
     </Page>
   );

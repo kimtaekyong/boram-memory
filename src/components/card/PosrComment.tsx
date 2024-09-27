@@ -4,13 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import { styled } from "styled-components";
 
 const CommentArea = styled.div`
-  padding: 20px 0;
+  padding: 14px 0 24px 0;
   display: flex;
   align-items: center;
   p {
     font-size: 16px;
     font-weight: 500;
-    letter-spacing: 0.001rem;
     span {
       margin-right: 8px;
       font-weight: 700;

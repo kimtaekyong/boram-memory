@@ -43,7 +43,7 @@ export default function LoginStatus() {
   return (
     <Userstatus>
       <LoginWrap>
-        <span className="userName text-xl font-medium mr-5">{user ? `${user.name} 님, 환영합니다!` : ""}</span>
+        <span className="userName text-lg font-medium mr-2">{user ? `${user.name} 님, 환영합니다!` : ""}</span>
         {/* user가 있으면 로그인된 상태로 간주하여 로그아웃/마이페이지 버튼을 표시 */}
         {user ? (
           <>
@@ -52,8 +52,8 @@ export default function LoginStatus() {
           </>
         ) : (
           <>
-            <Primary onClick={handleLogin} text="로그인" bgcolor="" fontcolor="#1f1f1f" />
-            <Primary onClick={handleSignup} text="회원가입" bgcolor="" fontcolor="#1f1f1f" />
+            <Primary onClick={handleLogin} text="로그인" bgcolor="#3985F2" fontcolor="#fff" />
+            <Primary onClick={handleSignup} text="회원가입" bgcolor="#3985F2" fontcolor="#fff" />
           </>
         )}
       </LoginWrap>
