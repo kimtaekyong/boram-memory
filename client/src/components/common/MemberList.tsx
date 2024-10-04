@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Link from "next/link"; // Link 컴포넌트 추가
 
 const Memberwrap = styled.div`
   border-radius: 8px;
@@ -132,6 +133,12 @@ const MemberList = () => {
       Sangju: "연＊흠",
       image: "/img/memory_01.png",
     },
+    {
+      id: 14,
+      Deceased: "故 연＊호 님",
+      Sangju: "연＊흠",
+      image: "/img/memory_01.png",
+    },
   ];
 
   const itemsPerPage = 12;
@@ -152,11 +159,13 @@ const MemberList = () => {
         <MemberListWrapper>
           {paginatedData.map((member) => (
             <MemberItem key={member.id}>
-              <img src={member.image} alt={member.Deceased} />
-              <div>
-                <h3>{member.Deceased}</h3>
-                <p>상주: {member.Sangju}</p>
-              </div>
+              <Link href={`/user/${member.id}`}>
+                <img src={member.image} alt={member.Deceased} />
+                <div>
+                  <h3>{member.Deceased}</h3>
+                  <p>상주: {member.Sangju}</p>
+                </div>
+              </Link>
             </MemberItem>
           ))}
         </MemberListWrapper>

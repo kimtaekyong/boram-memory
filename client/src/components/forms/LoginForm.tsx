@@ -151,12 +151,14 @@ const LoginForm = () => {
       name: "홍길동",
       idOrPhone: "test",
       password: "1234",
+      post: 1,
     },
     {
       id: 2,
       name: "보람상조",
       idOrPhone: "test2",
       password: "1234",
+      post: 2,
     },
   ];
 
@@ -175,7 +177,14 @@ const LoginForm = () => {
     if (foundUser) {
       // 로그인 성공 시 AuthContext에 name 저장
       login(foundUser.name);
-      router.push("/loginMain");
+
+      // 게시물 수에 따라 페이지 이동 결정
+      if (foundUser.post <= 1) {
+        router.push("/memorialdetail"); // 게시물이 1개 이하인 경우
+      } else {
+        router.push("/multiPostPage"); // 게시물이 1개 이상인 경우
+      }
+
       console.log("로그인 성공:", foundUser); // 로그인 성공 시 사용자 정보 콘솔 출력
     } else {
       setErrorMessage("아이디 또는 비밀번호가 일치하지 않습니다.");

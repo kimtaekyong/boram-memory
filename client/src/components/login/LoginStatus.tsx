@@ -29,7 +29,7 @@ export default function LoginStatus() {
   // 로그아웃 핸들러
   const handleLogout = () => {
     logout(); // 로그아웃 처리
-    router.push("/logoutMain"); // 로그아웃 후 메인 페이지로 이동
+    router.push("/main"); // 로그아웃 후 메인 페이지로 이동
   };
 
   const handleSignup = () => {

@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "outDir": "./dist",
+    "target": "es6",
+    "module": "commonjs",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "baseUrl": "./", // 절대 경로의 기준 설정
+    "paths": {
+      "*": ["node_modules/*", "*"] // 경로를 추가할 수 있습니다.
+    }
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules"]

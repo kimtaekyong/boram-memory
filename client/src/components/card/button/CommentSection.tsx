@@ -110,8 +110,10 @@ const Modal: React.FC<ModalProps> = ({ onClose, existingComments }) => {
             <li key={index}>{comment}</li>
           ))}
         </CommentList>
-        <Input type="text" value={inputValue} onChange={handleInputChange} placeholder="댓글 입력" />
-        <CloseButton onClick={handleAddComment}>댓글 추가</CloseButton>
+        <div className="flex">
+          <Input type="text" value={inputValue} onChange={handleInputChange} placeholder="댓글 입력" />
+          <CloseButton onClick={handleAddComment}>댓글 추가</CloseButton>
+        </div>
         <CloseButton onClick={handleClose}>닫기</CloseButton>
       </ModalContent>
     </ModalOverlay>

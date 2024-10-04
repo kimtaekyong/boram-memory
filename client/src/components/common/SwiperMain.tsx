@@ -109,7 +109,7 @@ const SwiperComponent = () => {
   const [animate, setAnimate] = useState(false);
 
   const handleEvent = () => {
-    router.push("/logoutMain");
+    router.push("/main");
   };
   const handleSlideChange = useCallback(() => {
     setAnimate(true);
