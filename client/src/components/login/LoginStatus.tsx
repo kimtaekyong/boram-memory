@@ -1,9 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import Primary from "../common/button/Primary";
-import { useAuth } from "@/context/AuthContext"; // AuthContext import
 
 const Userstatus = styled.div`
   display: flex;
@@ -18,8 +18,37 @@ const LoginWrap = styled.div`
 `;
 
 export default function LoginStatus() {
-  const { user, logout } = useAuth(); // AuthContext에서 user 정보와 login, logout 함수 가져옴
   const router = useRouter();
+  const [user, setUser] = useState(null); // 사용자 정보를 상태로 관리
+
+  useEffect(() => {
+    // 페이지가 로드될 때 토큰이 있는지 확인
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetchUserData(token); // 사용자 정보를 가져오는 함수 호출
+    }
+  }, []);
+
+  // 클라이언트에서 사용자 정보 요청
+  const fetchUserData = async (token: string) => {
+    try {
+      const response = await fetch("http://localhost:4000/api/authRoutes/me", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`, // JWT 토큰 추가
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      const data = await response.json();
+      console.log(data.user); // 사용자 정보 사용
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   // 로그인 핸들러
   const handleLogin = () => {
@@ -28,8 +57,9 @@ export default function LoginStatus() {
 
   // 로그아웃 핸들러
   const handleLogout = () => {
-    logout(); // 로그아웃 처리
-    router.push("/main"); // 로그아웃 후 메인 페이지로 이동
+    localStorage.removeItem("token"); // 로컬 스토리지에서 토큰 삭제
+    setUser(null); // 사용자 정보 초기화
+    router.push("/main"); // 메인 페이지로 이동
   };
 
   const handleSignup = () => {
@@ -43,15 +73,15 @@ export default function LoginStatus() {
   return (
     <Userstatus>
       <LoginWrap>
-        <span className="userName text-lg font-medium mr-2">{user ? `${user.name} 님, 환영합니다!` : ""}</span>
-        {/* user가 있으면 로그인된 상태로 간주하여 로그아웃/마이페이지 버튼을 표시 */}
         {user ? (
           <>
+            <span className="userName text-lg font-medium mr-2">{user.username}님, 환영합니다!</span>
             <Primary onClick={handleMyPage} text="마이페이지" bgcolor="#3985F2" fontcolor="#fff" />
             <Primary onClick={handleLogout} text="로그아웃" bgcolor="#3985F2" fontcolor="#fff" />
           </>
         ) : (
           <>
+            <span className="userName text-lg font-medium mr-2">로그인 해주세요.</span>
             <Primary onClick={handleLogin} text="로그인" bgcolor="#3985F2" fontcolor="#fff" />
             <Primary onClick={handleSignup} text="회원가입" bgcolor="#3985F2" fontcolor="#fff" />
           </>

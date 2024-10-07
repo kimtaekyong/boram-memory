@@ -1,169 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button } from "@mui/material";
 import CustomModal from "../common/CustomModal";
 import { modalContents } from "../../utils/modalContents "; // 생성한 파일에서 import
-
-const SignupForm = () => {
-  const [open, setOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("");
-  const [modalContent, setModalContent] = useState("");
-  const [allAgree, setAllAgree] = useState(false);
-  const [signupTerms, setSignupTerms] = useState(false);
-  const [privacyPolicy, setPrivacyPolicy] = useState(false);
-  const [smsAgree, setSmsAgree] = useState(false);
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-
-  const Membership = () => {
-    setModalTitle("회원가입약관");
-    setModalContent(modalContents.membershipTerms);
-    setOpen(true);
-  };
-
-  const Personal = () => {
-    setModalTitle("개인정보처리방침");
-    setModalContent(modalContents.privacyPolicy);
-    setOpen(true);
-  };
-
-  const Marketing = () => {
-    setModalTitle("마케팅 활용 동의 및 광고 수신 동의");
-    setModalContent(modalContents.smsAgreement);
-    setOpen(true);
-  };
-
-  const handleClose = () => setOpen(false);
-
-  const handleAllAgreeChange = (e: { target: { checked: any } }) => {
-    const isChecked = e.target.checked;
-    setAllAgree(isChecked);
-    setSignupTerms(isChecked);
-    setPrivacyPolicy(isChecked);
-  };
-
-  const handlePhoneAuth = () => {
-    const niceAuthUrl = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb"; // 나이스 본인인증 URL
-    const niceAuthParams = {
-      // 나이스 본인인증 API에 필요한 파라미터
-      // 이 정보는 나이스 본인인증 측의 API 문서에 따라 설정합니다.
-      serviceId: "C4IC5FMAA1SA", // 나이스에서 제공받은 서비스 ID
-      requestId: "G4236", // 고유한 요청 ID
-      callbackUrl: "https://yourdomain.com/callback", // 인증 완료 후 돌아올 콜백 URL
-    };
-
-    // 인증 페이지를 팝업으로 열기
-    window.open(`${niceAuthUrl}?${new URLSearchParams(niceAuthParams)}`, "niceAuth", "width=500,height=600");
-  };
-
-  // 이름 입력 핸들러
-  const handleNameChange = (e: { target: { value: React.SetStateAction<string> } }) => {
-    setName(e.target.value);
-  };
-
-  // 핸드폰 번호 입력 시 숫자만 허용하는 함수
-  const handlePhoneNumberChange = (e: { target: { value: string } }) => {
-    const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 허용
-    setPhoneNumber(value);
-  };
-
-  // name과 phoneNumber 둘 다 값이 있으면 버튼 활성화
-  const isButtonResult = name.length > 0 && phoneNumber.length > 0;
-  const isButtonEnabled = signupTerms && privacyPolicy;
-
-  return (
-    <FormWrapper>
-      <Checktitle>
-        <h2>약관에 동의해주세요.</h2>
-        <p>회원가입에 필요한 필수항목 및 선택항목 약관에 동의 해 주세요.</p>
-      </Checktitle>
-      <CheckboxAll>
-        <div className="AllWrap">
-          <div>
-            <input type="checkbox" id="allAgree" checked={allAgree} onChange={handleAllAgreeChange} />
-            <label htmlFor="allAgree">이용약관 모두 동의</label>
-          </div>
-          <p>서비스 이용을 위해 아래 약관에 모두 동의 합니다.</p>
-        </div>
-      </CheckboxAll>
-
-      <CheckboxWrapper>
-        <label htmlFor="signupTerms">
-          <input
-            type="checkbox"
-            id="signupTerms"
-            checked={signupTerms}
-            onChange={(e) => setSignupTerms(e.target.checked)}
-          />
-          <p>
-            <span className="text-Caution font-bold">(필수)</span> 회원가입 약관 동의
-          </p>
-        </label>
-        <Button onClick={Membership}>보기</Button>
-      </CheckboxWrapper>
-
-      <CheckboxWrapper>
-        <label htmlFor="privacyPolicy">
-          <input
-            type="checkbox"
-            id="privacyPolicy"
-            checked={privacyPolicy}
-            onChange={(e) => setPrivacyPolicy(e.target.checked)}
-          />
-          <p>
-            <span className="text-Caution font-bold">(필수)</span> 개인정보 처리방침 동의
-          </p>
-        </label>
-        <Button onClick={Personal}>보기</Button>
-      </CheckboxWrapper>
-
-      <CheckboxWrapper>
-        <label htmlFor="smsAgree">
-          <input type="checkbox" id="smsAgree" checked={smsAgree} onChange={(e) => setSmsAgree(e.target.checked)} />
-
-          <p>
-            <span className="text-Textcolor font-bold">(선택)</span> SMS 수신 동의
-          </p>
-        </label>
-        <Button onClick={Marketing}>보기</Button>
-      </CheckboxWrapper>
-
-      <SubmitButton type="button" disabled={!isButtonEnabled} onClick={handlePhoneAuth}>
-        휴대폰 본인인증
-      </SubmitButton>
-
-      <UserResult>
-        <span>휴대폰 본인인증을 진행하시면 회원정보가 자동 입력 됩니다.</span>
-        <div className="user__From">
-          <h2>회원 정보 입력</h2>
-          <form action="">
-            <ResultInput>
-              <span>이름</span>
-              <input type="text" placeholder="홍길동" value={name} onChange={handleNameChange} />
-            </ResultInput>
-            <ResultInput>
-              <span>휴대폰번호</span>
-              <input
-                type="tel"
-                placeholder="01012345678"
-                value={phoneNumber}
-                onChange={handlePhoneNumberChange}
-                maxLength={11}
-              />
-            </ResultInput>
-
-            <SubmitButton type="button" disabled={!isButtonResult} onClick={() => alert("회원가입완료")}>
-              회원가입
-            </SubmitButton>
-          </form>
-        </div>
-      </UserResult>
-      <CustomModal open={open} handleClose={handleClose} modalContent={modalContent} modalTitle={modalTitle} />
-    </FormWrapper>
-  );
-};
 
 // 스타일 컴포넌트 정의
 const FormWrapper = styled.div`
@@ -332,4 +173,195 @@ const ResultInput = styled.div`
     color: #999;
   }
 `;
+
+const SignupForm = () => {
+  const [open, setOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalContent, setModalContent] = useState("");
+  const [allAgree, setAllAgree] = useState(false);
+  const [signupTerms, setSignupTerms] = useState(false);
+  const [privacyPolicy, setPrivacyPolicy] = useState(false);
+  const [smsAgree, setSmsAgree] = useState(false);
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [authButton, setAuthButton] = useState(true); // 기본값을 true로 설정
+
+  const Membership = () => {
+    setModalTitle("회원가입약관");
+    setModalContent(modalContents.membershipTerms);
+    setOpen(true);
+  };
+
+  const Personal = () => {
+    setModalTitle("개인정보처리방침");
+    setModalContent(modalContents.privacyPolicy);
+    setOpen(true);
+  };
+
+  const Marketing = () => {
+    setModalTitle("마케팅 활용 동의 및 광고 수신 동의");
+    setModalContent(modalContents.smsAgreement);
+    setOpen(true);
+  };
+
+  const handleClose = () => setOpen(false);
+
+  const handleAllAgreeChange = (e: { target: { checked: any } }) => {
+    const isChecked = e.target.checked;
+    setAllAgree(isChecked);
+    setSignupTerms(isChecked);
+    setPrivacyPolicy(isChecked);
+    setAuthButton(allAgree); // 버튼 상태를 전체 동의에 맞춰 활성화 또는 비활성화
+  };
+
+  const handlePhoneAuth = () => {
+    const niceAuthUrl = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb"; // 나이스 본인인증 URL
+    const niceAuthParams = {
+      // 나이스 본인인증 API에 필요한 파라미터
+      // 이 정보는 나이스 본인인증 측의 API 문서에 따라 설정합니다.
+      serviceId: "C4IC5FMAA1SA", // 나이스에서 제공받은 서비스 ID
+      requestId: "G4236", // 고유한 요청 ID
+      callbackUrl: "https://yourdomain.com/callback", // 인증 완료 후 돌아올 콜백 URL
+    };
+
+    // 인증 페이지를 팝업으로 열기
+    window.open(`${niceAuthUrl}?${new URLSearchParams(niceAuthParams)}`, "niceAuth", "width=500,height=600");
+  };
+
+  // 이름 입력 핸들러
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  // 휴대폰 번호 입력 핸들러
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // 입력값에서 숫자만 추출
+    const onlyNumbers = e.target.value.replace(/[^0-9]/g, ""); // 정규 표현식 사용
+    setPhoneNumber(onlyNumbers);
+  };
+
+  // 버튼 활성화 상태를 설정하는 useEffect
+  useEffect(() => {
+    // 이름과 전화번호가 모두 입력되었는지 체크
+    if (name.trim() !== "" && phoneNumber.trim() !== "") {
+      setIsButtonEnabled(false); // 버튼 활성화
+    } else {
+      setIsButtonEnabled(true); // 버튼 비활성화
+    }
+  }, [name, phoneNumber]); // name 또는 phoneNumber가 변경될 때마다 실행
+
+  // name과 phoneNumber 둘 다 값이 있으면 버튼 활성화
+  // const isButtonResult = name.length > 0 && phoneNumber.length > 0;
+  // const isButtonEnabled = signupTerms && privacyPolicy;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/api/signup/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: name, phoneNumber: phoneNumber }), // 이름을 여기서 전송
+    });
+
+    if (response.ok) {
+      alert("회원가입 완료");
+      // 이후 필요한 동작 추가
+    } else {
+      const errorData = await response.json();
+      alert(`회원가입 실패: ${errorData.message}`);
+    }
+  };
+
+  return (
+    <FormWrapper>
+      <Checktitle>
+        <h2>약관에 동의해주세요.</h2>
+        <p>회원가입에 필요한 필수항목 및 선택항목 약관에 동의 해 주세요.</p>
+      </Checktitle>
+      <CheckboxAll>
+        <div className="AllWrap">
+          <div>
+            <input type="checkbox" id="allAgree" checked={allAgree} onChange={handleAllAgreeChange} />
+            <label htmlFor="allAgree">이용약관 모두 동의</label>
+          </div>
+          <p>서비스 이용을 위해 아래 약관에 모두 동의 합니다.</p>
+        </div>
+      </CheckboxAll>
+
+      <CheckboxWrapper>
+        <label htmlFor="signupTerms">
+          <input
+            type="checkbox"
+            id="signupTerms"
+            checked={signupTerms}
+            onChange={(e) => setSignupTerms(e.target.checked)}
+          />
+          <p>
+            <span className="text-Caution font-bold">(필수)</span> 회원가입 약관 동의
+          </p>
+        </label>
+        <Button onClick={Membership}>보기</Button>
+      </CheckboxWrapper>
+
+      <CheckboxWrapper>
+        <label htmlFor="privacyPolicy">
+          <input
+            type="checkbox"
+            id="privacyPolicy"
+            checked={privacyPolicy}
+            onChange={(e) => setPrivacyPolicy(e.target.checked)}
+          />
+          <p>
+            <span className="text-Caution font-bold">(필수)</span> 개인정보 처리방침 동의
+          </p>
+        </label>
+        <Button onClick={Personal}>보기</Button>
+      </CheckboxWrapper>
+
+      <CheckboxWrapper>
+        <label htmlFor="smsAgree">
+          <input type="checkbox" id="smsAgree" checked={smsAgree} onChange={(e) => setSmsAgree(e.target.checked)} />
+          <p>
+            <span className="text-Textcolor font-bold">(선택)</span> SMS 수신 동의
+          </p>
+        </label>
+        <Button onClick={Marketing}>보기</Button>
+      </CheckboxWrapper>
+
+      <SubmitButton type="button" disabled={authButton} onClick={handlePhoneAuth}>
+        휴대폰 본인인증
+      </SubmitButton>
+
+      <UserResult>
+        <span>휴대폰 본인인증을 진행하시면 회원정보가 자동 입력 됩니다.</span>
+        <div className="user__From">
+          <h2>회원 정보 입력</h2>
+          <form onSubmit={handleSubmit}>
+            <ResultInput>
+              <span>이름</span>
+              <input type="text" placeholder="홍길동" value={name} onChange={handleNameChange} />
+            </ResultInput>
+            <ResultInput>
+              <span>휴대폰번호</span>
+              <input
+                type="tel"
+                placeholder="01012345678"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                maxLength={11}
+              />
+            </ResultInput>
+            <SubmitButton type="submit" disabled={isButtonEnabled}>
+              회원가입
+            </SubmitButton>
+          </form>
+        </div>
+      </UserResult>
+      <CustomModal open={open} handleClose={handleClose} modalContent={modalContent} modalTitle={modalTitle} />
+    </FormWrapper>
+  );
+};
+
 export default SignupForm;

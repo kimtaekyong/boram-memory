@@ -1,7 +1,7 @@
 "use client";
 
-// client/src/app/memorials/[memorialId]/page.tsx
 import { FC, useEffect, useState } from "react";
+import { useParams } from "next/navigation"; // useParams 훅 가져오기
 
 // memorial 데이터 타입 정의
 type MemorialProps = {
@@ -15,7 +15,7 @@ type MemorialProps = {
 
 // 서버에서 데이터를 직접 패칭하는 함수
 const fetchMemorial = async (memorialId: string): Promise<MemorialProps> => {
-  const res = await fetch(`http://localhost:4000/api/memorials/${memorialId}`);
+  const res = await fetch(`/api/memorials/${memorialId}`);
   if (!res.ok) {
     const errorResponse = await res.json();
     throw new Error(`Failed to fetch data: ${errorResponse.message}`);
@@ -23,15 +23,22 @@ const fetchMemorial = async (memorialId: string): Promise<MemorialProps> => {
   return res.json();
 };
 
-const ProfileDesc: FC<{ memorialId: string }> = ({ memorialId }) => {
+const ProfileDesc: FC = () => {
+  const { memorialId } = useParams(); // useParams를 통해 memorialId 가져오기
+
   const [memorial, setMemorial] = useState<MemorialProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // memorialId가 배열일 경우 첫 번째 요소만 사용
+    if (!memorialId) return;
+
+    const id = Array.isArray(memorialId) ? memorialId[0] : memorialId;
+
     const loadMemorial = async () => {
       try {
-        console.log("Fetching memorial with ID:", memorialId);
-        const fetchedMemorial = await fetchMemorial(memorialId);
+        console.log("Fetching memorial with ID:", id);
+        const fetchedMemorial = await fetchMemorial(id);
         setMemorial(fetchedMemorial);
       } catch (error: unknown) {
         if (error instanceof Error) {

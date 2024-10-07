@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../../context/AuthContext"; // AuthContext 사용
 import { styled } from "styled-components";
 
 const Pagelayout = styled.div`
@@ -138,56 +137,42 @@ const Pagelayout = styled.div`
 
 const LoginForm = () => {
   const router = useRouter();
-  const { login } = useAuth(); // login 함수 사용
+
+  const [username, setUsername] = useState(""); // 사용자 이름
+  const [phoneNumber, setPhoneNumber] = useState(""); // 전화번호
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSignup = () => {
     router.push("/signup");
   };
 
-  // 더미 사용자 데이터
-  const dummyUsers = [
-    {
-      id: 1,
-      name: "홍길동",
-      idOrPhone: "test",
-      password: "1234",
-      post: 1,
-    },
-    {
-      id: 2,
-      name: "보람상조",
-      idOrPhone: "test2",
-      password: "1234",
-      post: 2,
-    },
-  ];
+  const isButtonDisabled = !username || !phoneNumber;
 
-  const [idOrPhone, setIdOrPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/authRoutes/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, phone_number: phoneNumber }), // username과 phone_number 전송
+      });
 
-  const isButtonDisabled = !idOrPhone || !password;
-
-  const handleLogin = () => {
-    // 사용자 확인
-    const foundUser = dummyUsers.find(
-      (user) => (user.idOrPhone === idOrPhone || user.name === idOrPhone) && user.password === password
-    );
-
-    if (foundUser) {
-      // 로그인 성공 시 AuthContext에 name 저장
-      login(foundUser.name);
-
-      // 게시물 수에 따라 페이지 이동 결정
-      if (foundUser.post <= 1) {
-        router.push("/memorialdetail"); // 게시물이 1개 이하인 경우
-      } else {
-        router.push("/multiPostPage"); // 게시물이 1개 이상인 경우
+      if (!response.ok) {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || "로그인 실패");
+        return;
       }
 
-      console.log("로그인 성공:", foundUser); // 로그인 성공 시 사용자 정보 콘솔 출력
-    } else {
-      setErrorMessage("아이디 또는 비밀번호가 일치하지 않습니다.");
+      const data = await response.json();
+
+      // 토큰 저장 및 페이지 이동 로직
+      // 예: localStorage에 JWT 저장
+      localStorage.setItem("token", data.token);
+      router.push("/main"); // 성공 후 이동할 페이지
+    } catch (error) {
+      console.error("로그인 중 오류 발생:", error);
+      setErrorMessage("로그인 중 오류가 발생했습니다.");
     }
   };
 
@@ -206,16 +191,16 @@ const LoginForm = () => {
           </div>
           <input
             type="text"
-            placeholder="아이디 또는 전화번호"
-            value={idOrPhone}
-            onChange={(e) => setIdOrPhone(e.target.value)}
+            placeholder="성함"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="input-field"
           />
           <input
-            type="password"
-            placeholder="비밀번호"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type="tel"
+            placeholder="핸드폰번호"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
             className="input-field"
           />
           {errorMessage && <p className="error-message">{errorMessage}</p>}

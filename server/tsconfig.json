@@ -6,11 +6,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-
     "baseUrl": "./", // 절대 경로의 기준 설정
     "paths": {
       "*": ["node_modules/*", "*"] // 경로를 추가할 수 있습니다.
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "./@types"] // @types 경로 추가
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules"]
