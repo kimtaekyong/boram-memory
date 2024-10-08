@@ -19,7 +19,7 @@ const LoginWrap = styled.div`
 
 export default function LoginStatus() {
   const router = useRouter();
-  const [user, setUser] = useState(null); // 사용자 정보를 상태로 관리
+  const [user, setUser] = useState<any>(null); // 사용자 정보를 상태로 관리
 
   useEffect(() => {
     // 페이지가 로드될 때 토큰이 있는지 확인
@@ -44,14 +44,19 @@ export default function LoginStatus() {
       }
 
       const data = await response.json();
-      console.log(data.user); // 사용자 정보 사용
+      setUser(data.user); // 사용자 정보를 상태에 저장
+      // console.log(data.user); // 사용자 정보 확인 (디버깅용)
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   // 로그인 핸들러
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    const token = localStorage.getItem("token"); // 토큰 가져오기
+    if (token) {
+      await fetchUserData(token); // 사용자 정보를 가져오는 함수 호출
+    }
     router.push("/login"); // 로그인 페이지로 이동
   };
 
@@ -60,6 +65,7 @@ export default function LoginStatus() {
     localStorage.removeItem("token"); // 로컬 스토리지에서 토큰 삭제
     setUser(null); // 사용자 정보 초기화
     router.push("/main"); // 메인 페이지로 이동
+    alert("로그아웃을 하실건가요?");
   };
 
   const handleSignup = () => {
@@ -81,7 +87,7 @@ export default function LoginStatus() {
           </>
         ) : (
           <>
-            <span className="userName text-lg font-medium mr-2">로그인 해주세요.</span>
+            <span className="userName text-lg font-medium mr-2"></span>
             <Primary onClick={handleLogin} text="로그인" bgcolor="#3985F2" fontcolor="#fff" />
             <Primary onClick={handleSignup} text="회원가입" bgcolor="#3985F2" fontcolor="#fff" />
           </>

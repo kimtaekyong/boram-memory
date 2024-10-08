@@ -166,10 +166,18 @@ const LoginForm = () => {
 
       const data = await response.json();
 
-      // 토큰 저장 및 페이지 이동 로직
-      // 예: localStorage에 JWT 저장
+      // authorizedMemorial 데이터 확인
+      const authorizedMemorial = data.authorized_memorial; // authorized_memorial 가져오기
+
+      // 토큰 저장
       localStorage.setItem("token", data.token);
-      router.push("/main"); // 성공 후 이동할 페이지
+
+      // authorizedMemorial 값에 따라 페이지 이동
+      if (authorizedMemorial <= 1) {
+        window.location.href = "memorialdetail";
+      } else {
+        window.location.href = "multiPostPage";
+      }
     } catch (error) {
       console.error("로그인 중 오류 발생:", error);
       setErrorMessage("로그인 중 오류가 발생했습니다.");
@@ -177,51 +185,49 @@ const LoginForm = () => {
   };
 
   return (
-    <>
-      <Pagelayout>
-        <div className="login-form">
-          <div className="login__title">
-            <h2>
-              <span>안녕하세요.</span>
-              <br />
-              보람그룹입니다.
-            </h2>
-            <p>보람 온라인 추모관은 고인과 함께 찍은 사진이나 동영상을 등록하여,</p>
-            <p>지인들에게 자신의 생각과 감정 등을 공유 할 수 있습니다.</p>
-          </div>
-          <input
-            type="text"
-            placeholder="성함"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="input-field"
-          />
-          <input
-            type="tel"
-            placeholder="핸드폰번호"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            className="input-field"
-          />
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-          <button
-            disabled={isButtonDisabled}
-            className={`login-button ${isButtonDisabled ? "disabled" : ""}`}
-            onClick={handleLogin}
-          >
-            로그인
-          </button>
-          <div className="login__line">
-            <span>또는</span>
-          </div>
-          <div className="login__signup">
-            <span>온라인 추모관에 처음 오셨나요 ?</span>
-            <button onClick={handleSignup}>회원가입</button>
-          </div>
+    <Pagelayout>
+      <div className="login-form">
+        <div className="login__title">
+          <h2>
+            <span>안녕하세요.</span>
+            <br />
+            보람그룹입니다.
+          </h2>
+          <p>보람 온라인 추모관은 고인과 함께 찍은 사진이나 동영상을 등록하여,</p>
+          <p>지인들에게 자신의 생각과 감정 등을 공유 할 수 있습니다.</p>
         </div>
-      </Pagelayout>
-    </>
+        <input
+          type="text"
+          placeholder="성함"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="input-field"
+        />
+        <input
+          type="tel"
+          placeholder="핸드폰번호"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          className="input-field"
+        />
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+        <button
+          disabled={isButtonDisabled}
+          className={`login-button ${isButtonDisabled ? "disabled" : ""}`}
+          onClick={handleLogin}
+        >
+          로그인
+        </button>
+        <div className="login__line">
+          <span>또는</span>
+        </div>
+        <div className="login__signup">
+          <span>온라인 추모관에 처음 오셨나요 ?</span>
+          <button onClick={handleSignup}>회원가입</button>
+        </div>
+      </div>
+    </Pagelayout>
   );
 };
 

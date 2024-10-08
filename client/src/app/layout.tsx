@@ -8,11 +8,11 @@ import theme from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import GlobalStyles from "@/styles/globals";
 import MetaTags from "@/components/common/MetaTags";
-import { usePathname } from "next/navigation"; // usePathname import
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname(); // 현재 경로 가져오기
-  const isIntroPage = pathname === "/"; // intro 페이지 확인
+  const pathname = usePathname();
+  const isIntroPage = pathname === "/";
 
   return (
     <html lang="en">
@@ -20,9 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MetaTags />
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          {!isIntroPage && <Header />} {/* intro 페이지가 아닐 때만 Header 렌더링 */}
+          {!isIntroPage && <Header />}
           {children}
-          {!isIntroPage && <Footer />} {/* intro 페이지가 아닐 때만 Footer 렌더링 */}
+          {!isIntroPage && <Footer />}
         </ThemeProvider>
       </body>
     </html>

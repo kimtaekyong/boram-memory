@@ -3,30 +3,16 @@ import Memorial from "../models/Memorial"; // 모델 가져오기
 
 const router = express.Router();
 
-// 모든 메모리얼 데이터 가져오기
-router.get("/", async (req: Request, res: Response): Promise<void> => {
+// 로그인된 사용자에 따라 기념물 정보를 가져오는 API 엔드포인트
+router.post("/", async (req: Request, res: Response): Promise<void> => {
+  const userId = req.body.user_id; // 요청 본문에서 user_id 가져오기
+
   try {
-    const memorials = await Memorial.getAllMemorials(); // 모델에서 모든 메모리얼 데이터 가져오기
+    const memorials = await Memorial.getMemorialsByUserId(userId); // 모델에서 기념물 데이터 가져오기
     res.json(memorials);
   } catch (error) {
-    console.error("Error fetching memorials:", (error as Error).message);
-    res.status(500).json({ message: "Error fetching memorials" });
-  }
-});
-
-// 특정 메모리얼 데이터 가져오기
-router.get("/:memorialId", async (req: Request, res: Response): Promise<void> => {
-  const { memorialId } = req.params;
-  try {
-    const memorial = await Memorial.getMemorialById(memorialId); // 모델에서 특정 메모리얼 데이터 가져오기
-    if (memorial) {
-      res.json(memorial); // 결과 반환
-    } else {
-      res.status(404).json({ message: "Memorial not found" });
-    }
-  } catch (error) {
-    console.error("Error fetching memorial:", (error as Error).message);
-    res.status(500).json({ message: "Error fetching memorial" });
+    console.error("쿼리 실행 실패: ", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
