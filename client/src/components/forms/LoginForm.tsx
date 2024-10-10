@@ -169,7 +169,7 @@ const LoginForm = () => {
       // authorizedMemorial 데이터 확인
       const authorizedMemorial = data.authorized_memorial; // authorized_memorial 가져오기
 
-      // 토큰 저장
+      // 토큰 저장 
       localStorage.setItem("token", data.token);
 
       // authorizedMemorial 값에 따라 페이지 이동
