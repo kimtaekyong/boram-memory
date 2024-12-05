@@ -82,14 +82,14 @@ export default function LoginStatus() {
         {user ? (
           <>
             <span className="userName text-lg font-medium mr-2">{user.username}님, 환영합니다!</span>
-            <Primary onClick={handleMyPage} text="마이페이지" bgcolor="#3985F2" fontcolor="#fff" />
-            <Primary onClick={handleLogout} text="로그아웃" bgcolor="#3985F2" fontcolor="#fff" />
+            <Primary onClick={handleMyPage} text="마이페이지" bgcolor="#3985F2" fontcolor="#fff" btnHeight="28px" />
+            <Primary onClick={handleLogout} text="로그아웃" bgcolor="#3985F2" fontcolor="#fff" btnHeight="28px" />
           </>
         ) : (
           <>
             <span className="userName text-lg font-medium mr-2"></span>
-            <Primary onClick={handleLogin} text="로그인" bgcolor="#3985F2" fontcolor="#fff" />
-            <Primary onClick={handleSignup} text="회원가입" bgcolor="#3985F2" fontcolor="#fff" />
+            <Primary onClick={handleLogin} text="로그인" bgcolor="#3985F2" fontcolor="#fff" btnHeight="28px" />
+            <Primary onClick={handleSignup} text="회원가입" bgcolor="#3985F2" fontcolor="#fff" btnHeight="28px" />
           </>
         )}
       </LoginWrap>

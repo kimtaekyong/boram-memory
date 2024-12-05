@@ -19,7 +19,7 @@ const PageContainer = styled.div`
 const Component = styled.div`
   max-width: 400px;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(231, 231, 231, 0.55);
   padding: 18px 24px;
   border-radius: 8px;
   width: 100%;

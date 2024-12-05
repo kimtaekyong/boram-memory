@@ -11,7 +11,7 @@ const items = [
 
 const ComponentLayout = styled.div`
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(231, 231, 231, 0.55);
   padding: 24px;
   border-radius: 8px;
 `;
@@ -42,25 +42,26 @@ const ComponentItem = styled.ul`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  column-gap: 12px;
   li {
-    width: calc(100% / 2 - 12px);
+    width: calc(100% / 2 - 4px);
     img {
-      max-height: 200px;
+      max-height: 280px;
       border-radius: 4px;
     }
     span {
       display: block;
       padding: 8px 0 12px 0;
       h2 {
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: 0.2px;
-      }
-      p {
         font-size: 16px;
         font-weight: 500;
+        letter-spacing: -1px;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 500;
         line-height: 1.5;
+        letter-spacing: -1px;
+        color: rgba(81, 81, 81, 0.55);
       }
     }
   }

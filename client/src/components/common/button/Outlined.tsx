@@ -15,9 +15,9 @@ const StyledButton = styled.button<{ color: string; width?: string; height?: str
   border: 1px solid #7d7d7d;
   background: rgba(31, 31, 31, 0.25);
   color: #fff;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   transition: background-color 0.3s, transform 0.3s;
 

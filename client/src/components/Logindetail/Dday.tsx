@@ -24,7 +24,7 @@ const Ddaydata = [
 
 const ComponentLayout = styled.div`
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(231, 231, 231, 0.55);
   padding: 24px;
   border-radius: 8px;
 `;
@@ -57,11 +57,12 @@ const ComponentTag = styled.ul`
   padding: 10px;
   display: flex;
   column-gap: 8px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(231, 231, 231, 0.95);
   border-radius: 4px;
   li {
     padding: 8px 20px;
-    background-color: #eee;
+    background-color: rgba(231, 231, 231, 0.25);
+    border: 1px solid rgba(231, 231, 231, 0.55);
     border-radius: 4px;
     color: #1f1f1f;
     font-weight: 500;

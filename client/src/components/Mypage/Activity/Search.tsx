@@ -39,7 +39,7 @@ const NameSearchInput = styled.div<{ isFocused: boolean }>`
   input {
     box-sizing: border-box;
     width: 100%;
-    font-size: 17px;
+    font-size: 14px;
     letter-spacing: 0.2px;
     font-weight: 500;
     color: #1f1f1f;
@@ -47,7 +47,6 @@ const NameSearchInput = styled.div<{ isFocused: boolean }>`
     outline: 0;
     &::placeholder {
       font-weight: 400;
-      letter-spacing: -0.25px;
     }
   }
   .icon {
@@ -68,8 +67,8 @@ const SearchBtn = styled.button<{ isActive: boolean }>`
   border: 1px solid #e5e5e5;
   color: ${({ isActive }) => (isActive ? "#fff" : "#1f1f1f")};
   background-color: ${({ isActive }) => (isActive ? "#1677ff" : "transparent")};
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   cursor: ${({ isActive }) => (isActive ? "pointer" : "not-allowed")};
   opacity: ${({ isActive }) => (isActive ? 1 : 0.5)};
 `;
@@ -84,8 +83,8 @@ const ResultBtn = styled.button<{ isActive: boolean }>`
   border-radius: 4px;
   border: 1px solid #e5e5e5;
   color: #1f1f1f;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   cursor: ${({ isActive }) => (isActive ? "pointer" : "not-allowed")};
   opacity: ${({ isActive }) => (isActive ? 1 : 0.5)};
 `;

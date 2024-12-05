@@ -2,6 +2,12 @@
 const nextConfig = {
   compiler: {
     styledComponents: true,
+    webpack5: true,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    webpack: (config, options) => {
+      config.cache = false;
+      return config;
+    },
   },
   async rewrites() {
     return [

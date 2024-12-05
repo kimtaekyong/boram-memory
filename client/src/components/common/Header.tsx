@@ -36,7 +36,9 @@ export default function Header() {
   return (
     <HeaderContainer>
       <Navigator>
-        <div className="text-xl font-bold text-BarndColor">상담 1588-7979</div>
+        <div className="text-xl font-bold text-BarndColor" style={{ fontFamily: "SpoqaHanSansNeo" }}>
+          상담 1588-7979
+        </div>
         <div className="Logo">
           <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_39_406)">

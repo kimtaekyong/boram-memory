@@ -25,7 +25,7 @@ const LeftContainer = styled.div`
   position: sticky;
   top: 12px;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(231, 231, 231, 0.55);
   border-radius: 8px;
 `;
 const RightContainer = styled.div`

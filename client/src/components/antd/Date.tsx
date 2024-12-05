@@ -24,7 +24,7 @@ const StyledDatePicker = styled(DatePicker)`
   font-weight: 400;
   letter-spacing: -0.25px;
   .ant-picker-input > input {
-    font-size: 17px;
+    font-size: 14px;
     letter-spacing: -1px;
     font-weight: 500;
   }
@@ -47,7 +47,7 @@ const CustomDatePicker: React.FC<DateProps> = ({ onChange }) => {
           onChange(finalDate, finalDateString);
         }}
         allowClear={false} // 클리어 기능 추가
-        format="YYYY / MM / DD" // 날짜 형식 설정
+        format="YYYY . MM . DD" // 날짜 형식 설정
         placeholder="별세일시" // 플레이스홀더 설정
         inputReadOnly={true} // 텍스트 입력을 방지
       />

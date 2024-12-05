@@ -28,11 +28,10 @@ const Pagelayout = styled.div`
         }
       }
       p {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
-        line-height: 1.35;
-        letter-spacing: -1.25px;
-        color: rgba(31, 31, 31, 0.55);
+        line-height: 1.4;
+        color: rgba(81, 81, 81, 0.55);
       }
     }
     input {
@@ -42,12 +41,12 @@ const Pagelayout = styled.div`
       padding: 0 14px;
       font-size: 16px;
       font-weight: 500;
+      letter-spacing: 0.1px;
       &:focus {
         color: #1f1f1f;
-        letter-spacing: 0.1px;
         outline: none;
         border: 1px solid #0064ff;
-        transition: all 0.3s ease;
+        transition: border 0.3s ease;
       }
     }
     .error-message {
@@ -169,7 +168,7 @@ const LoginForm = () => {
       // authorizedMemorial 데이터 확인
       const authorizedMemorial = data.authorized_memorial; // authorized_memorial 가져오기
 
-      // 토큰 저장 
+      // 토큰 저장
       localStorage.setItem("token", data.token);
 
       // authorizedMemorial 값에 따라 페이지 이동

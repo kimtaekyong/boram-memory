@@ -182,7 +182,7 @@ const SwiperComponent = () => {
               함께 나누세요.
             </h2>
           </div>
-          <Outlined onClick={handleEvent} text="추모관 입장하기" width={"200px"} height={"60px"} color={"#0064FF"} />
+          <Outlined onClick={handleEvent} text="추모관 입장하기" width={"140px"} height={"48px"} color={"#0064FF"} />
         </SwiperFixed>
         {slideData.map((item) => (
           <SwiperSlide key={item.id}>

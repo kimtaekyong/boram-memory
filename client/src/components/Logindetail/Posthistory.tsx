@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ComponentLayout = styled.div`
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(231, 231, 231, 0.55);
   padding: 24px;
   border-radius: 8px;
   h2 {
@@ -38,13 +38,15 @@ const HistoryList = styled.ul`
     }
     span {
       text-align: center;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
       line-height: 1;
+      color: rgba(81, 81, 81, 0.55);
     }
     .count {
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 300;
+      color: rgba(31, 31, 31, 0.65);
     }
   }
 `;
