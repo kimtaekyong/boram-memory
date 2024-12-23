@@ -3,7 +3,7 @@ import { RowDataPacket } from "mysql2";
 
 // 메모리얼 모델 정의
 const Memorial = {
-  // 로그인된 사용자에 따라 기념물 정보를 가져오기
+  // 로그인된 사용자에 따라 정보를 가져오기
   getMemorialsByUserId: async (userId: number): Promise<RowDataPacket[]> => {
     const query = `
         SELECT 
