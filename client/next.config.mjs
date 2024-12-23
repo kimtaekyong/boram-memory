@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+// next.config.js
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
@@ -7,13 +7,15 @@ const nextConfig = {
   assetPrefix: isProd ? "https://kimtaekyong.github.io/boram-memory/" : "",
   basePath: isProd ? "/boram-memory" : "",
   images: {
-    unoptimized: true,
+    unoptimized: true, // Optional, only if you want to avoid Next.js image optimization
   },
   compiler: {
     styledComponents: true,
     webpack5: true,
     webpack: (config) => {
-      config.cache = false;
+      if (process.env.NODE_ENV !== "production") {
+        config.cache = false; // Disable caching only in development
+      }
       return config;
     },
   },
@@ -25,7 +27,7 @@ const nextConfig = {
             destination: "http://localhost:4000/api/memorials/:memorialId",
           },
         ]
-      : [];
+      : []; // Make sure to handle production API calls as needed
   },
 };
 
