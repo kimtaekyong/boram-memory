@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -106,16 +105,16 @@ const SwiperFixed = styled.div`
 `;
 const SwiperComponent = () => {
   const router = useRouter();
-  const [animate, setAnimate] = useState(false);
+  // const [animate, setAnimate] = useState(false);
 
   const handleEvent = () => {
     router.push("/main");
   };
-  const handleSlideChange = useCallback(() => {
-    setAnimate(true);
-    const timer = setTimeout(() => setAnimate(false), 1000); // 애니메이션이 끝난 후 애니메이션 상태를 false로 설정
-    return () => clearTimeout(timer); // 타이머 클리너
-  }, []);
+  // const handleSlideChange = useCallback(() => {
+  //   setAnimate(true);
+  //   const timer = setTimeout(() => setAnimate(false), 1000); // 애니메이션이 끝난 후 애니메이션 상태를 false로 설정
+  //   return () => clearTimeout(timer); // 타이머 클리너
+  // }, []);
   return (
     <div className="w-full relative">
       <Swiper
@@ -124,7 +123,7 @@ const SwiperComponent = () => {
         loop={true}
         slidesPerView={1}
         speed={2000}
-        onSlideChange={handleSlideChange} // 슬라이드 변경 시 호출
+        // onSlideChange={handleSlideChange} // 슬라이드 변경 시 호출
         allowTouchMove={false} // 스와이프 비활성화
       >
         <Swiperheader>
