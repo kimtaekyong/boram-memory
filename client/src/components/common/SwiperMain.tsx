@@ -44,7 +44,7 @@ const slideData = [
 
 // `animate` 속성 타입 정의
 interface SwiperTitleProps {
-  animate?: boolean;
+  animate: string;
 }
 
 const Swiperheader = styled.div`
@@ -188,7 +188,7 @@ const SwiperComponent = () => {
           <SwiperSlide key={item.id}>
             <div className="select-none pointer-events-none	 flex flex-col items-center justify-center h-full relative">
               <img src={item.image} alt={`Slide ${item.id}`} className="w-full h-[100vh] object-cover" />
-              <SwiperTitle animate={animate}>
+              <SwiperTitle animate="false">
                 <div className="pl-1 text-xl mb-2 font-medium">{item.title}</div>
                 <div className="text-3xl font-thin" dangerouslySetInnerHTML={{ __html: item.text }}></div>
               </SwiperTitle>

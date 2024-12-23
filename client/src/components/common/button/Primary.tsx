@@ -14,13 +14,16 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, bgcolor, fontcolor }) =>
       style={{
         backgroundColor: bgcolor,
         color: fontcolor,
-        padding: "8px 14px",
+        padding: "0 14px",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
         fontSize: "14px",
-        fontWeight: "700",
-        fontFamily: "SpoqaHanSansNeo",
+        fontWeight: "500",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "34px",
       }}
     >
       {text}

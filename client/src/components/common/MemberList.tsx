@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import Link from "next/link"; // Link 컴포넌트 추가
+import MemberItem from "@/components/card/MemberItem ";
 
 const Memberwrap = styled.div`
-  border-radius: 8px;
-  margin-top: 12px;
-  width: 100%;
-  padding: 24px;
-  background-color: #fbfbfb;
-  border: 1px solid #e5e5e5;
+  padding: 60px 0 28px 0;
+  .MemberList {
+    text-align: center;
+    color: #3c3c3c;
+    margin-bottom: 28px;
+  }
   h2 {
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 700;
-    padding: 8px 0 12px 0;
+    line-height: 1.55;
+    letter-spacing: -1.25px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -1px;
   }
 `;
 
@@ -22,130 +28,39 @@ const MemberListWrapper = styled.ul`
   list-style-type: none;
   padding: 0;
   display: flex;
-  column-gap: 12px;
+  gap: 12px;
   flex-wrap: wrap;
-`;
-
-const MemberItem = styled.li`
-  width: calc(100% / 4 - 12px);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  row-gap: 18px;
-  padding: 24px 0;
-  img {
-    width: 200px;
-    height: 200px;
-    border-radius: 100%;
-    overflow: hidden;
-  }
-  h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 500;
-  }
 `;
 
 const MemberList = () => {
   const MemberData = [
-    {
-      id: 1,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_03.png",
-    },
-    {
-      id: 2,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_02.png",
-    },
-    {
-      id: 3,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 4,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 5,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_03.png",
-    },
-    {
-      id: 6,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_02.png",
-    },
-    {
-      id: 7,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 8,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 9,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_03.png",
-    },
-    {
-      id: 10,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_02.png",
-    },
-    {
-      id: 11,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 12,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 13,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
-    {
-      id: 14,
-      Deceased: "故 연＊호 님",
-      Sangju: "연＊흠",
-      image: "/img/memory_01.png",
-    },
+    { id: 1, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 2, Deceased: "故 홍길동 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 3, Deceased: "故 홍금숙 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 4, Deceased: "故 보람상조 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 5, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 6, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 7, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 8, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 9, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 10, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 11, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 12, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 13, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 14, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 15, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 16, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 17, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 18, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 19, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
+    { id: 20, Deceased: "故 연＊호 님", Sangju: "연＊흠", image: "/img/userDummy-img.png" },
   ];
 
   const itemsPerPage = 12;
   const [page, setPage] = useState(1);
 
   // 페이지 변경 핸들러
-  const handleChange = (event: any, value: React.SetStateAction<number>) => {
+  const handleChange = (_event: any, value: React.SetStateAction<number>) => {
     setPage(value);
   };
 
@@ -155,22 +70,17 @@ const MemberList = () => {
   return (
     <>
       <Memberwrap>
-        <h2>추모리스트</h2>
+        <div className="MemberList">
+          <h2>삼가 고인의 명복을 빕니다.</h2>
+          <p>추억이 머무는 곳, 그리움이 이어지는 곳</p>
+        </div>
         <MemberListWrapper>
           {paginatedData.map((member) => (
-            <MemberItem key={member.id}>
-              <Link href={`/user/${member.id}`}>
-                <img src={member.image} alt={member.Deceased} />
-                <div>
-                  <h3>{member.Deceased}</h3>
-                  <p>상주: {member.Sangju}</p>
-                </div>
-              </Link>
-            </MemberItem>
+            <MemberItem key={member.id} member={member} />
           ))}
         </MemberListWrapper>
       </Memberwrap>
-      <div className="flex justify-center items-center h-20">
+      <div className="flex justify-center items-center h-10 pb-4">
         <Stack>
           <Pagination
             count={Math.ceil(MemberData.length / itemsPerPage)}
@@ -179,10 +89,12 @@ const MemberList = () => {
             shape="rounded"
             sx={{
               "& .Mui-selected": {
-                backgroundColor: "#1976d2 !important", // 선택된 페이지 색상
-                color: "#fff", // 선택된 페이지 텍스트 색상
+                backgroundColor: "#283c50 !important",
+                color: "#fff",
+                fontSize: "16px",
+                fontWeight: "500",
                 "&:hover": {
-                  backgroundColor: "#115293", // 선택된 페이지 hover 색상
+                  backgroundColor: "#283c50",
                 },
               },
             }}

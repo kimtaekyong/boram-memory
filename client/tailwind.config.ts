@@ -9,8 +9,8 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      Background: "#F3F4F6",
-      BarndColor: "#1D2088",
+      Background: "#f5f5f5",
+      BarndColor: "#283C50",
       Textcolor: "#999999",
       Title: "#181A1B",
       PointColor: "#3985F2",

@@ -12,8 +12,8 @@ const Pagelayout = styled.div`
   .login-form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    width: 440px;
+    gap: 4px;
+    width: 420px;
     margin: 0 auto;
     .login__title {
       margin-bottom: 14px;
@@ -39,13 +39,13 @@ const Pagelayout = styled.div`
       height: 60px;
       border: 1px solid #e5e8eb;
       padding: 0 14px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
-      letter-spacing: 0.1px;
+      letter-spacing: -1px;
       &:focus {
         color: #1f1f1f;
         outline: none;
-        border: 1px solid #0064ff;
+        border: 1px solid rgb(40, 60, 80);
         transition: border 0.3s ease;
       }
     }
@@ -57,11 +57,10 @@ const Pagelayout = styled.div`
       padding-left: 8px;
     }
     .login-button {
-      padding: 14px;
-      height: 56px;
-      font-size: 16px;
+      height: 52px;
+      font-size: 14px;
       font-weight: 700;
-      background-color: #0064ff;
+      background-color: rgb(40, 60, 80);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -75,15 +74,15 @@ const Pagelayout = styled.div`
     .login__line {
       display: flex;
       justify-content: center;
-      padding: 24px 0;
+      padding: 14px 0;
       span {
         width: 100%;
         display: block;
         position: relative;
         text-align: center;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 500;
-        color: #1f1f1f;
+        color: rgba(81, 81, 81, 0.35);
         &::after {
           content: "";
           display: block;
@@ -115,18 +114,18 @@ const Pagelayout = styled.div`
       flex-direction: column;
       span {
         margin-bottom: 8px;
-        font-size: 18px;
-        font-weight: 600;
-        color: rgba(31, 31, 31, 0.65);
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(81, 81, 81, 0.65);
         display: block;
         margin-bottom: 12px;
       }
       button {
-        height: 58px;
-        font-size: 16px;
-        font-weight: 700;
+        height: 54px;
+        font-size: 14px;
+        font-weight: 500;
         color: #fff;
-        background-color: #1f1f1f;
+        background-color: rgb(40, 60, 80);
         border-radius: 4px;
         width: 100%;
       }
