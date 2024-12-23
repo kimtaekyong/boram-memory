@@ -1,21 +1,31 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
+  reactStrictMode: true,
+  output: "export",
+  assetPrefix: isProd ? "https://kimtaekyong.github.io/boram-memory/" : "",
+  basePath: isProd ? "/boram-memory" : "",
+  images: {
+    unoptimized: true,
+  },
   compiler: {
     styledComponents: true,
     webpack5: true,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    webpack: (config, options) => {
+    webpack: (config) => {
       config.cache = false;
       return config;
     },
   },
   async rewrites() {
-    return [
-      {
-        source: "/api/memorials/:memorialId", // 클라이언트가 요청하는 경로
-        destination: "http://localhost:4000/api/memorials/:memorialId", // 실제 요청이 전달될 백엔드 서버 경로
-      },
-    ];
+    return process.env.NODE_ENV === "development"
+      ? [
+          {
+            source: "/api/memorials/:memorialId",
+            destination: "http://localhost:4000/api/memorials/:memorialId",
+          },
+        ]
+      : [];
   },
 };
 
