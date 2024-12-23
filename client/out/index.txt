@@ -1,0 +1,21 @@
+4:"$Sreact.fragment"
+5:I[14547,[],"ClientSegmentRoot"]
+6:I[25173,["285","static/chunks/285-d279db74a6acdebe.js","255","static/chunks/255-5125389b8bb4998d.js","787","static/chunks/787-3d2bbe0f645892e2.js","143","static/chunks/143-c47d80f1617fd063.js","816","static/chunks/816-d2f5f697ade972cf.js","177","static/chunks/app/layout-170a65b24a228732.js"],"default"]
+7:I[15244,[],""]
+8:I[43866,[],""]
+a:I[57033,[],"ClientPageRoot"]
+b:I[94350,["285","static/chunks/285-d279db74a6acdebe.js","818","static/chunks/818-c419f5b09059d257.js","133","static/chunks/133-0a004c63b9b17231.js","974","static/chunks/app/page-9193cb8c41ec8004.js"],"default"]
+e:I[86213,[],"OutletBoundary"]
+10:I[86213,[],"MetadataBoundary"]
+12:I[86213,[],"ViewportBoundary"]
+14:I[34835,[],""]
+1:HL["https://kimtaekyong.github.io/boram-memory/_next/static/css/efa7e9b3fa01c978.css","style"]
+2:HL["https://kimtaekyong.github.io/boram-memory/_next/static/css/15a460f12b20e8b4.css","style"]
+3:HL["https://kimtaekyong.github.io/boram-memory/_next/static/css/ef46db3751d8e999.css","style"]
+0:{"P":null,"b":"rJFMAWo7rj4z-IlU2STHR","p":"https://kimtaekyong.github.io/boram-memory","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$4","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"https://kimtaekyong.github.io/boram-memory/_next/static/css/efa7e9b3fa01c978.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"Component":"$6","slots":{"children":["$","$L7",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]},"params":{},"promise":"$@9"}]]}],{"children":["__PAGE__",["$","$4","c",{"children":[["$","$La",null,{"Component":"$b","searchParams":{},"params":"$0:f:0:1:1:props:children:1:props:params","promises":["$@c","$@d"]}],[["$","link","0",{"rel":"stylesheet","href":"https://kimtaekyong.github.io/boram-memory/_next/static/css/15a460f12b20e8b4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"https://kimtaekyong.github.io/boram-memory/_next/static/css/ef46db3751d8e999.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Le",null,{"children":"$Lf"}]]}],{},null]},null],["$","$4","h",{"children":[null,["$","$4","1mDsMERyQAgISjVnXJ119",{"children":[["$","$L10",null,{"children":"$L11"}],["$","$L12",null,{"children":"$L13"}],null]}]]}]]],"m":"$undefined","G":["$14","$undefined"],"s":false,"S":true}
+9:{}
+c:{}
+d:{}
+13:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","link","1",{"rel":"icon","href":"/boram-memory/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+f:null
