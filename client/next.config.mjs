@@ -3,7 +3,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   reactStrictMode: true,
-  // output: "export",
+  output: "export",
   assetPrefix: isProd ? "https://kimtaekyong.github.io/boram-memory/" : "",
   basePath: isProd ? "/boram-memory" : "",
   images: {
