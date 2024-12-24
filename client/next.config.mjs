@@ -23,6 +23,10 @@ const nextConfig = {
       "./Components/**/*.{js,ts,jsx,tsx,mdx}",
       "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
+    compiler: {
+      // ssr and displayName are configured by default
+      styledComponents: true,
+    },
   },
   async rewrites() {
     return process.env.NODE_ENV === "development"
