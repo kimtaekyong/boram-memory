@@ -1,11 +1,11 @@
 // next.config.js
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
-  assetPrefix: isProd ? "https://kimtaekyong.github.io/boram-memory/" : "",
-  basePath: isProd ? "/boram-memory" : "",
+  // assetPrefix: isProd ? "https://kimtaekyong.github.io/boram-memory/" : "",
+  // basePath: isProd ? "/boram-memory" : "",
   images: {
     unoptimized: true, // Optional, only if you want to avoid Next.js image optimization
   },
