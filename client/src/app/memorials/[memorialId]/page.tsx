@@ -44,9 +44,11 @@ const MemorialPage: FC<PageProps> = async ({ params }) => {
   return <ProfileDesc memorial={memorial} />;
 };
 
-// 반환 타입 명시 (Promise 포함)
-const AsyncMemorialPage: FC<PageProps> = async (props) => {
-  return <MemorialPage {...props} />;
+type AsyncPage<P = {}> = (props: P) => Promise<JSX.Element>;
+
+const MemorialPage: AsyncPage<PageProps> = async ({ params }) => {
+  const memorial = await fetchMemorial(params.memorialId);
+  return <ProfileDesc memorial={memorial} />;
 };
 
 export default AsyncMemorialPage;
