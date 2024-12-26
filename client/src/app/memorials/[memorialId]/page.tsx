@@ -13,7 +13,7 @@ type MemorialProps = {
 // 서버에서 memorial 데이터 패칭
 const fetchMemorial = async (memorialId: string): Promise<MemorialProps> => {
   const res = await fetch(`http://localhost:4000/memorials/${memorialId}`, {
-    cache: "no-store", // 최신 데이터 패칭
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Memorial not found");
@@ -27,7 +27,7 @@ export async function generateStaticParams(): Promise<{ params: { memorialId: st
   const memorials: MemorialProps[] = await res.json();
 
   return memorials.map((memorial) => ({
-    params: { memorialId: memorial.id.toString() }, // params로 감싸줌
+    params: { memorialId: memorial.id.toString() },
   }));
 }
 
@@ -38,10 +38,15 @@ type PageProps = {
   };
 };
 
+// 페이지 컴포넌트를 비동기 함수로 설정
 const MemorialPage: FC<PageProps> = async ({ params }) => {
   const memorial = await fetchMemorial(params.memorialId);
-
   return <ProfileDesc memorial={memorial} />;
 };
 
-export default MemorialPage;
+// 반환 타입 명시 (Promise 포함)
+const AsyncMemorialPage: FC<PageProps> = async (props) => {
+  return <MemorialPage {...props} />;
+};
+
+export default AsyncMemorialPage;
