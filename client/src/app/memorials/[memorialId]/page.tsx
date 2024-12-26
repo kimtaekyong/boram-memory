@@ -12,7 +12,7 @@ type MemorialProps = {
 
 // 서버에서 memorial 데이터 패칭
 const fetchMemorial = async (memorialId: string): Promise<MemorialProps> => {
-  const res = await fetch(`https://api.example.com/memorials/${memorialId}`, {
+  const res = await fetch(`http://localhost:4000/memorials/${memorialId}`, {
     cache: "no-store", // 최신 데이터 패칭
   });
   if (!res.ok) {
@@ -22,12 +22,12 @@ const fetchMemorial = async (memorialId: string): Promise<MemorialProps> => {
 };
 
 // 정적 경로 생성
-export async function generateStaticParams() {
-  const res = await fetch("https://api.example.com/memorials");
+export async function generateStaticParams(): Promise<{ params: { memorialId: string } }[]> {
+  const res = await fetch("http://localhost:4000/memorials");
   const memorials: MemorialProps[] = await res.json();
 
   return memorials.map((memorial) => ({
-    memorialId: memorial.id.toString(),
+    params: { memorialId: memorial.id.toString() }, // params로 감싸줌
   }));
 }
 
